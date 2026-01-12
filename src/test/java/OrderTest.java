@@ -1,14 +1,13 @@
 import io.qameta.allure.junit4.DisplayName;
-import io.restassured.RestAssured;
 import io.restassured.response.ValidatableResponse;
 import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import ru.praktikum_services.qa_scooter.BaseTest;
 import ru.praktikum_services.qa_scooter.steps.OrderSteps;
-import ru.praktikum_services.qa_scooter.testData.CancelOrderData;
-import ru.praktikum_services.qa_scooter.testData.OrderData;
+import ru.praktikum_services.qa_scooter.testdata.CancelOrderData;
+import ru.praktikum_services.qa_scooter.testdata.OrderData;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -16,7 +15,7 @@ import java.util.Collection;
 import static org.hamcrest.CoreMatchers.notNullValue;
 
 @RunWith(Parameterized.class)
-public class OrderTest {
+public class OrderTest extends BaseTest {
     String firstName;
     String lastName;
     String address;
@@ -52,10 +51,6 @@ public class OrderTest {
         });
     }
 
-    @Before
-    public void setUp() {
-        RestAssured.baseURI = "https://qa-scooter.praktikum-services.ru/";
-    }
 
     @Test
     @DisplayName("Проверка выбора цвета самоката при оформлении заказа")

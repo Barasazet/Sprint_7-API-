@@ -1,17 +1,17 @@
 import io.qameta.allure.junit4.DisplayName;
-import io.restassured.RestAssured;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import ru.praktikum_services.qa_scooter.BaseTest;
 import ru.praktikum_services.qa_scooter.steps.CourierSteps;
-import ru.praktikum_services.qa_scooter.testData.CourierData;
-import ru.praktikum_services.qa_scooter.testData.CourierLoginData;
+import ru.praktikum_services.qa_scooter.testdata.CourierData;
+import ru.praktikum_services.qa_scooter.testdata.CourierLoginData;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 
 
-public class CreateCourierTest {
+public class CreateCourierTest extends BaseTest {
 
     CourierData courierData;
     CourierLoginData courierLogin;
@@ -23,7 +23,6 @@ public class CreateCourierTest {
 
     @Before
     public void setUp() {
-        RestAssured.baseURI = "https://qa-scooter.praktikum-services.ru/";
         login = RandomStringUtils.randomAlphabetic(13);
         password = RandomStringUtils.randomAlphabetic(13);
         firstName = RandomStringUtils.randomAlphabetic(13);

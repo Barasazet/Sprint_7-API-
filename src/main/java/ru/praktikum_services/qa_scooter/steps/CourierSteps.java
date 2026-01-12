@@ -4,8 +4,8 @@ package ru.praktikum_services.qa_scooter.steps;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
-import ru.praktikum_services.qa_scooter.testData.CourierData;
-import ru.praktikum_services.qa_scooter.testData.CourierLoginData;
+import ru.praktikum_services.qa_scooter.testdata.CourierData;
+import ru.praktikum_services.qa_scooter.testdata.CourierLoginData;
 
 import static io.restassured.RestAssured.given;
 

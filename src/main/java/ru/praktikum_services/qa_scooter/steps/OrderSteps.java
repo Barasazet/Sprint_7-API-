@@ -3,8 +3,8 @@ package ru.praktikum_services.qa_scooter.steps;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
-import ru.praktikum_services.qa_scooter.testData.CancelOrderData;
-import ru.praktikum_services.qa_scooter.testData.OrderData;
+import ru.praktikum_services.qa_scooter.testdata.CancelOrderData;
+import ru.praktikum_services.qa_scooter.testdata.OrderData;
 
 import static io.restassured.RestAssured.given;
 

@@ -1,18 +1,18 @@
 import io.qameta.allure.junit4.DisplayName;
-import io.restassured.RestAssured;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import ru.praktikum_services.qa_scooter.BaseTest;
 import ru.praktikum_services.qa_scooter.steps.CourierSteps;
-import ru.praktikum_services.qa_scooter.testData.CourierData;
-import ru.praktikum_services.qa_scooter.testData.CourierLoginData;
+import ru.praktikum_services.qa_scooter.testdata.CourierData;
+import ru.praktikum_services.qa_scooter.testdata.CourierLoginData;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.notNullValue;
 
-public class LoginCourierTest {
+public class LoginCourierTest extends BaseTest {
 
     CourierData courierData;
     CourierLoginData courierLogin;
@@ -23,16 +23,15 @@ public class LoginCourierTest {
 
     @Before
     public void setUp() {
-        RestAssured.baseURI = "https://qa-scooter.praktikum-services.ru/";
         login = RandomStringUtils.randomAlphabetic(13);
         password = RandomStringUtils.randomAlphabetic(13);
         firstName = RandomStringUtils.randomAlphabetic(13);
+        courierData = new CourierData(login, password, firstName);
     }
 
     @Test
     @DisplayName("Проверка успешного логина курьера в систему")
     public void shouldLoginCourier() {
-        courierData = new CourierData(login, password, firstName);
         courierLogin = new CourierLoginData(login, password);
         CourierSteps courierSteps = new CourierSteps();
 
@@ -69,7 +68,6 @@ public class LoginCourierTest {
     @Test
     @DisplayName("Невозможно залогиниться без пароля")
     public void cantLoginWithoutPassword() {
-        courierData = new CourierData(login, password, firstName);
         courierLogin = new CourierLoginData(login, password);
         CourierSteps courierSteps = new CourierSteps();
         String savedPassword = password;
@@ -88,7 +86,6 @@ public class LoginCourierTest {
     @Test
     @DisplayName("Невозможно залогиниться с неверным логином")
     public void cantLoginWithWrongLogin() {
-        courierData = new CourierData(login, password, firstName);
         courierLogin = new CourierLoginData(login, password);
         String savedLogin = login;
         CourierSteps courierSteps = new CourierSteps();
@@ -108,7 +105,6 @@ public class LoginCourierTest {
     @Test
     @DisplayName("Невозможно залогиниться с неверным паролем")
     public void cantLoginWithWrongPassword() {
-        courierData = new CourierData(login, password, firstName);
         courierLogin = new CourierLoginData(login, password);
         String savedPassword = password;
         CourierSteps courierSteps = new CourierSteps();

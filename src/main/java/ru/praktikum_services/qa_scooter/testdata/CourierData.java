@@ -1,4 +1,4 @@
-package ru.praktikum_services.qa_scooter.testData;
+package ru.praktikum_services.qa_scooter.testdata;
 
 public class CourierData {
     private String login;
