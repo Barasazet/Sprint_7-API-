@@ -3,7 +3,6 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import ru.praktikum_services.qa_scooter.BaseTest;
 import ru.praktikum_services.qa_scooter.steps.CourierSteps;
 import ru.praktikum_services.qa_scooter.testdata.CourierData;
 import ru.praktikum_services.qa_scooter.testdata.CourierLoginData;

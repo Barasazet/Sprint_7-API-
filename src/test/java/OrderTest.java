@@ -4,7 +4,6 @@ import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import ru.praktikum_services.qa_scooter.BaseTest;
 import ru.praktikum_services.qa_scooter.steps.OrderSteps;
 import ru.praktikum_services.qa_scooter.testdata.CancelOrderData;
 import ru.praktikum_services.qa_scooter.testdata.OrderData;

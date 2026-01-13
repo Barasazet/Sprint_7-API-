@@ -1,7 +1,6 @@
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Before;
 import org.junit.Test;
-import ru.praktikum_services.qa_scooter.BaseTest;
 import ru.praktikum_services.qa_scooter.steps.CourierSteps;
 import ru.praktikum_services.qa_scooter.testdata.CourierData;
 

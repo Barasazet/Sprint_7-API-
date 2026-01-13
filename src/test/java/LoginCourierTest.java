@@ -3,7 +3,6 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import ru.praktikum_services.qa_scooter.BaseTest;
 import ru.praktikum_services.qa_scooter.steps.CourierSteps;
 import ru.praktikum_services.qa_scooter.testdata.CourierData;
 import ru.praktikum_services.qa_scooter.testdata.CourierLoginData;
@@ -27,15 +26,15 @@ public class LoginCourierTest extends BaseTest {
         password = RandomStringUtils.randomAlphabetic(13);
         firstName = RandomStringUtils.randomAlphabetic(13);
         courierData = new CourierData(login, password, firstName);
+        CourierSteps courierSteps = new CourierSteps();
+        courierSteps.createCourier(courierData);
     }
 
     @Test
     @DisplayName("Проверка успешного логина курьера в систему")
     public void shouldLoginCourier() {
-        courierLogin = new CourierLoginData(login, password);
         CourierSteps courierSteps = new CourierSteps();
-
-        courierSteps.createCourier(courierData);
+        courierLogin = new CourierLoginData(login, password);
         courierSteps.loginCourier(courierLogin)
                 .then()
                 .statusCode(200)
@@ -48,12 +47,9 @@ public class LoginCourierTest extends BaseTest {
     @DisplayName("Невозможно залогиниться без логина")
     public void cantLoginWithoutLogin() {
         CourierSteps courierSteps = new CourierSteps();
-        courierData = new CourierData(login, password, firstName);
         courierLogin = new CourierLoginData(login, password);
         String savedLogin = login;
 
-
-        courierSteps.createCourier(courierData);
         courierLogin.setLogin(null);
         courierSteps.loginCourier(courierLogin)
                 .then()
@@ -68,12 +64,11 @@ public class LoginCourierTest extends BaseTest {
     @Test
     @DisplayName("Невозможно залогиниться без пароля")
     public void cantLoginWithoutPassword() {
-        courierLogin = new CourierLoginData(login, password);
         CourierSteps courierSteps = new CourierSteps();
+        courierLogin = new CourierLoginData(login, password);
         String savedPassword = password;
-
-        courierSteps.createCourier(courierData);
         courierLogin.setPassword(null);
+
         courierSteps.loginCourier(courierLogin)
                 .then().log().all()
                 .statusCode(400)
@@ -86,11 +81,10 @@ public class LoginCourierTest extends BaseTest {
     @Test
     @DisplayName("Невозможно залогиниться с неверным логином")
     public void cantLoginWithWrongLogin() {
+        CourierSteps courierSteps = new CourierSteps();
         courierLogin = new CourierLoginData(login, password);
         String savedLogin = login;
-        CourierSteps courierSteps = new CourierSteps();
 
-        courierSteps.createCourier(courierData);
         courierLogin.setLogin(randomAlphabetic(13));
         courierSteps.loginCourier(courierLogin)
                 .then()
@@ -105,11 +99,10 @@ public class LoginCourierTest extends BaseTest {
     @Test
     @DisplayName("Невозможно залогиниться с неверным паролем")
     public void cantLoginWithWrongPassword() {
+        CourierSteps courierSteps = new CourierSteps();
         courierLogin = new CourierLoginData(login, password);
         String savedPassword = password;
-        CourierSteps courierSteps = new CourierSteps();
 
-        courierSteps.createCourier(courierData);
         courierLogin.setPassword(randomAlphabetic(13));
         courierSteps.loginCourier(courierLogin)
                 .then()
