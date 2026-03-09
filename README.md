@@ -10,4 +10,4 @@
 
 Составлен отчет о результатах тестирования в Allure
 
-Стек: Java 11, Maven 4.0, ResttAssured, JUnit 4, Allure
+Стек: Java 11, Maven 4.0, RestAssured, JUnit 4, Allure
